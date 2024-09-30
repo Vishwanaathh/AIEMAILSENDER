@@ -9,6 +9,9 @@
     body{
         background-color: navajowhite;
         font-family: monospace;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     button{
         background-color: blue;
@@ -19,9 +22,10 @@
     <h1>AUTOMATIC AI EMAIL SENDER</h1>
     <div>
     <input type="text" placeholder="enter your email" id="from"/><br>
-    <input type="text" placeholder="enter your app password" id="apppass"/><br>
+    <input type="password" placeholder="enter your app password" id="apppass"/><br>
     <input type="text" placeholder="enter whom to send " id="to"/><br>
-    <textarea id="mail" placeholder="Enter subject along with proper names and required essentials"></textarea><br>
+    <input type="text" placeholder="enter subject" id="mail"/><br>
+    <textarea id="prompttt" placeholder="Enter AI PROMPT"></textarea><br>
     <button id="send" onclick="send()"> GENERATE AND SEND THIS MAIL</button>
     </div>
 
@@ -33,6 +37,7 @@
         let fromm=document.getElementById('from').value;
     let apppasss=document.getElementById('apppass').value;
     let too=document.getElementById('to').value;
+    let prompttt=document.getElementById('prompttt').value;
     let maill=document.getElementById('mail').value;
         fetch('http://localhost:5000',{
               method:"POST",
@@ -42,6 +47,7 @@
               body:JSON.stringify({
                 from:fromm,
                 apppass:apppasss,
+                promptt:prompttt,
                 to:too,
                 mail:maill
               })
